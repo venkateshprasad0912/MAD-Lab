@@ -11,41 +11,42 @@ XML code:***********************************************************************
 
     <TextView
         android:id="@+id/on_touch"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="66dp"
+        android:layout_height="20dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
-        android:text="@string/on_touch"
+        android:layout_marginEnd="8dp"
+        android:text="ONTouch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.106" />
+        app:layout_constraintVertical_bias="0.095" />
 
     <Button
         android:id="@+id/button_on_click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_width="121dp"
+        android:layout_height="42dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="128dp"
-        android:text="@string/onclick"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="8dp"
+        android:text="onClick"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/on_touch" />
 
     <Button
         android:id="@+id/button_long_click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_width="126dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/longclick"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:text="longClick"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_on_click" />
 
@@ -53,22 +54,33 @@ XML code:***********************************************************************
         android:id="@+id/on_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="forOnKeyPress"
         android:inputType="textPersonName"
-        android:hint="@string/for_on_key_press"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/on_touch" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="220dp"
+        android:layout_height="192dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_long_click" />
 
 </android.support.constraint.ConstraintLayout>
 
 
 Java code:****************************************************************************************************
 
-package com.dirtybyte.lab;
+package com.example.varsha;
 
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
@@ -77,13 +89,14 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+CalendarView cal;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +149,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        cal=findViewById(R.id.calendarView);
+        cal.getDate();
 
 
 
