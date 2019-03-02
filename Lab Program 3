@@ -1,0 +1,65 @@
+XML code:*****************************************************************
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="378dp"
+        android:layout_height="498dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="116dp" />
+</android.support.constraint.ConstraintLayout>
+
+
+Java code:****************************************************************
+
+package com.example.varsha;
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity
+{
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Bitmap bg = Bitmap.createBitmap(720, 1280, Bitmap.Config.ARGB_8888);
+        ImageView i = (ImageView) findViewById(R.id.imageView2);
+        i.setBackgroundDrawable(new BitmapDrawable(bg));
+        Canvas canvas = new Canvas(bg);
+
+        Paint paint = new Paint();
+        paint.setColor(Color.BLUE);
+        paint.setTextSize(50);
+
+        canvas.drawText("Rectangle", 120, 150, paint);
+        canvas.drawRect(100, 200, 300, 750, paint);
+
+        paint.setColor(Color.RED);
+        canvas.drawText("Circle", 120, 800, paint);
+        canvas.drawCircle(200, 1000, 150, paint);
+
+        paint.setColor(Color.GREEN);
+        canvas.drawText("Square", 480, 800, paint);
+        canvas.drawRect(400, 850, 950, 1150, paint);
+
+        paint.setColor(Color.BLACK);
+        canvas.drawText("Line", 550, 150, paint);
+        canvas.drawLine(550, 170, 550, 650, paint);
+    }
+}
