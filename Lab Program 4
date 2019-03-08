@@ -1,117 +1,130 @@
-xml code:
+Develop an app that uses databases.
+
+
+
+XML Code:************************************************************************************************
+
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="50dp"
-        android:layout_y="20dp"
+        android:layout_x="102dp"
+        android:layout_y="77dp"
         android:text="Student Details"
         android:textSize="30sp" />
- 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="110dp"
-        android:text="Enter Rollno:"
+        android:layout_x="62dp"
+        android:layout_y="184dp"
+        android:text="Reg. No. :"
         android:textSize="20sp" />
- 
+
     <EditText
         android:id="@+id/Rollno"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="175dp"
-        android:layout_y="100dp"
+        android:layout_x="198dp"
+        android:layout_y="168dp"
         android:inputType="number"
         android:textSize="20sp" />
- 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="160dp"
-        android:text="Enter Name:"
+        android:layout_x="63dp"
+        android:layout_y="235dp"
+        android:text="Name:"
         android:textSize="20sp" />
- 
+
     <EditText
         android:id="@+id/Name"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="175dp"
-        android:layout_y="150dp"
+        android:layout_x="198dp"
+        android:layout_y="218dp"
         android:inputType="text"
         android:textSize="20sp" />
- 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="20dp"
-        android:layout_y="210dp"
-        android:text="Enter Marks:"
+        android:layout_x="63dp"
+        android:layout_y="287dp"
+        android:text="Marks:"
         android:textSize="20sp" />
- 
+
     <EditText
         android:id="@+id/Marks"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="175dp"
-        android:layout_y="200dp"
+        android:layout_x="200dp"
+        android:layout_y="270dp"
         android:inputType="number"
         android:textSize="20sp" />
- 
+
     <Button
         android:id="@+id/Insert"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="25dp"
-        android:layout_y="300dp"
+        android:layout_x="36dp"
+        android:layout_y="379dp"
+        android:background="@color/colorPrimary"
         android:text="Insert"
         android:textSize="30dp" />
- 
+
     <Button
         android:id="@+id/Delete"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="200dp"
-        android:layout_y="300dp"
+        android:layout_x="41dp"
+        android:layout_y="467dp"
+        android:background="@color/colorPrimary"
         android:text="Delete"
         android:textSize="30dp" />
- 
+
     <Button
         android:id="@+id/Update"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="25dp"
-        android:layout_y="400dp"
+        android:layout_x="219dp"
+        android:layout_y="375dp"
+        android:background="@color/colorPrimary"
         android:text="Update"
         android:textSize="30dp" />
- 
+
     <Button
         android:id="@+id/View"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_x="200dp"
-        android:layout_y="400dp"
+        android:layout_x="220dp"
+        android:layout_y="465dp"
+        android:background="@color/colorPrimary"
         android:text="View"
         android:textSize="30dp" />
- 
+
     <Button
         android:id="@+id/ViewAll"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_x="100dp"
-        android:layout_y="500dp"
+        android:layout_x="109dp"
+        android:layout_y="560dp"
+        android:background="@color/colorPrimary"
         android:text="View All"
         android:textSize="30dp" />
- 
+
 </AbsoluteLayout>
 
-java code:
-package com.example.exno5;
- 
+
+
+
+Java Code:****************************************************************************************************
+
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -122,7 +135,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
- 
+
 public class MainActivity extends Activity implements OnClickListener
 {
     EditText Rollno,Name,Marks;
@@ -134,7 +147,7 @@ public class MainActivity extends Activity implements OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
- 
+
         Rollno=(EditText)findViewById(R.id.Rollno);
         Name=(EditText)findViewById(R.id.Name);
         Marks=(EditText)findViewById(R.id.Marks);
@@ -143,13 +156,13 @@ public class MainActivity extends Activity implements OnClickListener
         Update=(Button)findViewById(R.id.Update);
         View=(Button)findViewById(R.id.View);
         ViewAll=(Button)findViewById(R.id.ViewAll);
- 
+
         Insert.setOnClickListener(this);
         Delete.setOnClickListener(this);
         Update.setOnClickListener(this);
         View.setOnClickListener(this);
         ViewAll.setOnClickListener(this);
- 
+
         // Creating database and table
         db=openOrCreateDatabase("StudentDB", Context.MODE_PRIVATE, null);
         db.execSQL("CREATE TABLE IF NOT EXISTS student(rollno VARCHAR,name VARCHAR,marks VARCHAR);");
