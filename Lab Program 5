@@ -1,4 +1,5 @@
-XML file
+
+XML code:*******************************************************************************************
 
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -28,11 +29,22 @@ XML file
         android:layout_margin="10dp"
         android:layout_gravity="center"
         android:text="Load Image 2"/>
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="Load Image 3" />
+
 </LinearLayout>
 
-Java file
 
-package com.example.multithread;
+
+Java code:**********************************************************************************************
+
+package com.example.varsha;
 
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
@@ -42,13 +54,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
     ImageView img;
-    Button bt1,bt2;
+    Button bt1,bt2,bt3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bt1=(Button)findViewById(R.id.button3);
         bt2=(Button)findViewById(R.id.button4);
+        bt3=(Button)findViewById(R.id.button5);
         img=(ImageView)findViewById(R.id.imageView2);
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         img.post(new Runnable() {
                             @Override
                             public void run() {
-                                img.setImageResource(R.drawable.w1);
+                                img.setImageResource(R.drawable.image1);
 
                             }
                         });
@@ -76,7 +89,24 @@ public class MainActivity extends AppCompatActivity {
                         img.post(new Runnable() {
                             @Override
                             public void run() {
-                                img.setImageResource(R.drawable.w2);
+                                img.setImageResource(R.drawable.image2);
+
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        img.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                img.setImageResource(R.drawable.image3);
 
                             }
                         });
